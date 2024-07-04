@@ -22,7 +22,7 @@ git checkout feature/more_compact_inference_api
 
 :: Install the requirements
 echo Installing GroundingDINO dependencies...
-pip install -q -e .
+python -m pip install -e .
 
 echo "GroundingDINO setup complete."
 pause

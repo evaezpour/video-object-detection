@@ -25,13 +25,7 @@ To use the GroundingDINO model, you need to clone the repository and install the
      ```sh
      cd GroundingDINO
      ```
-
-   - Check out the specific branch:
-
-     ```sh
-     git checkout feature/more_compact_inference_api
-     ```
-
+ 
    - Install the dependencies:
 
      ```sh
@@ -55,7 +49,7 @@ To use the GroundingDINO model, you need to clone the repository and install the
 
 ### Package Installation
 
-After setting up GroundingDINO, you can install the object detection package. Navigate to the directory containing `setup.py` and run:
+After setting up GroundingDINO, you can install the video object detection package. Navigate to the directory containing `setup.py` and run:
 
 ```sh
 pip install .

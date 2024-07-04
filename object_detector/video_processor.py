@@ -1,6 +1,6 @@
 import cv2
-from video_object_detection.model import load_grounding_dino_model
-from video_object_detection.utils import draw_annotations
+from object_detector.model import load_grounding_dino_model
+from object_detector.utils import draw_annotations
 
 
 def detect_objects(model, frame, text_prompt, box_threshold, text_threshold):

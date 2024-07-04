@@ -21,7 +21,6 @@ setup(
         "opencv-python>=4.5.1.48",
         "requests>=2.25.1",
         "supervision @ git+https://github.com/supervision-ai/supervision.git#egg=supervision",
-        "groundingdino @ git+https://github.com/IDEA-Research/GroundingDINO.git@feature/more_compact_inference_api#egg=groundingdino",
     ],
     classifiers=[
         "Programming Language :: Python :: 3",
