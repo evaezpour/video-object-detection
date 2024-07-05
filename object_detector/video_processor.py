@@ -50,5 +50,6 @@ def process_video(input_video_path, output_video_path, text_prompt, box_threshol
         out.write(annotated_frame)
 
     cap.release()
-    out.release()
+    if out is not None:
+        out.release()
     cv2.destroyAllWindows()
