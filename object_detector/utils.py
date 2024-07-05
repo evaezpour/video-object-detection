@@ -1,9 +1,8 @@
-from supervision.detection.annotate import BoundingBoxAnnotator, LabelAnnotator
+import supervision as sv
 
 
 def draw_annotations(frame, detections, labels):
-    bounding_box_annotator = BoundingBoxAnnotator()
-    label_annotator = LabelAnnotator()
+    box_annotator = sv.BoxAnnotator()
 
     # Format the labels based on the confidence values in the detections object
     formatted_labels = [
@@ -11,8 +10,10 @@ def draw_annotations(frame, detections, labels):
         for label, confidence in zip(labels, detections.confidence)
     ]
 
-    annotated_frame = frame.copy()
-    annotated_frame = bounding_box_annotator.annotate(scene=annotated_frame, detections=detections)
-    annotated_frame = label_annotator.annotate(scene=annotated_frame, detections=detections, labels=formatted_labels)
+    annotated_frame = box_annotator.annotate(
+        scene=frame.copy(),
+        detections=detections,
+        labels=formatted_labels
+    )
 
     return annotated_frame

@@ -20,7 +20,7 @@ setup(
         "torchaudio>=0.7.2",
         "opencv-python>=4.5.1.48",
         "requests>=2.25.1",
-        "supervision @ git+https://github.com/supervision-ai/supervision.git#egg=supervision",
+        "supervision",
     ],
     classifiers=[
         "Programming Language :: Python :: 3",
