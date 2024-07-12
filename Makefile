@@ -1,46 +1,46 @@
-# Define variables
-PYTHON := python
-PIP := pip
-GIT := git
-CD := cd
+# Makefile for Python project
 
-# Define directories
-HOME_DIR := $(HOME)
-GROUNDINGDINO_DIR := $(HOME_DIR)/GroundingDINO
-PROJECT_DIR := $(CURDIR)
+# Variables
+PYTHON := python3
+PIP := $(PYTHON) -m pip
+BAT := cmd /c setup_groundingdino.bat  # Command to run .bat script (Windows)
 
-# Define commands
-SETUP_GROUNDINGDINO := setup_groundingdino.bat
+# Default target
+.PHONY: all
+all: install test
 
-# Targets
-.PHONY: all install_groundingdino install_package install_dependencies test clean
+# Install dependencies (including GroundingDINO setup)
+.PHONY: install
+install:
+	$(PIP) install -v -r requirements.txt
+	@echo "Dependencies installed."
+	@echo "Setting up GroundingDINO model..."
+	$(BAT)
+	@echo "GroundingDINO setup complete."
 
-all: install_groundingdino install_package
+# Run tests
+#.PHONY: test
+#test:
+#    $(PYTHON) -m pytest tests/
+#    @echo "Tests complete."
 
-# Target to set up GroundingDINO
-install_groundingdino:
-	@if [ ! -d "$(GROUNDINGDINO_DIR)" ]; then \
-		echo "Cloning GroundingDINO repository..."; \
-		$(GIT) clone https://github.com/IDEA-Research/GroundingDINO.git $(GROUNDINGDINO_DIR); \
-	else \
-		echo "GroundingDINO directory already exists. Skipping clone."; \
-	fi
-	$(CD) $(GROUNDINGDINO_DIR) && $(GIT) checkout feature/more_compact_inference_api
-	$(CD) $(GROUNDINGDINO_DIR) && $(PIP) install -q -e .
-
-# Target to install the package
-install_package:
-	$(PIP) install .
-
-# Target to install dependencies
-install_dependencies:
-	$(PIP) install -r requirements.txt
-
-# Target to clean up
+# Clean up generated files
+.PHONY: clean
 clean:
-	find . -type f -name '*.pyc' -delete
-	find . -type d -name '__pycache__' -exec rm -r {} +
+	rm -rf build/ dist/ *.egg-info/
+	@echo "Cleaned up."
 
-# Target to run the example script
-run_example:
-	$(PYTHON) examples/process_video_example.py
+# Run the main script
+.PHONY: run
+run:
+	$(PYTHON) path/to/main_script.py
+
+# Help target
+.PHONY: help
+help:
+	@echo "Available targets:"
+	@echo "  install : Install dependencies and set up GroundingDINO model"
+	@echo "  test    : Run tests"
+	@echo "  clean   : Clean up generated files"
+	@echo "  run     : Run the main script"
+	@echo "  help    : Show this help message"
