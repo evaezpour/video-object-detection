@@ -12,7 +12,7 @@ all: install test
 # Install dependencies (including GroundingDINO setup)
 .PHONY: install
 install:
-	$(PIP) install -v -r requirements.txt
+	$(PIP) install --prefer-binary -v -r requirements.txt
 	@echo "Dependencies installed."
 	@echo "Setting up GroundingDINO model..."
 	$(BAT)
