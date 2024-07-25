@@ -42,20 +42,22 @@ clean:
 	rm -rf build/ dist/ *.egg-info/
 	@echo "Cleaned up."
 
-# Run the main script
-ifndef i
-$(error input video file path is required)
-endif
 
-ifndef o
-$(error output video directory is required)
-endif
-
-ifndef t
-$(error text prompt is required)
-endif
 .PHONY: run
 run:
+	# Run the main script
+	ifndef i
+	$(error input video file path is required)
+	endif
+
+	ifndef o
+	$(error output video directory is required)
+	endif
+
+	ifndef t
+	$(error text prompt is required)
+	endif
+
 	$(PYTHON) -m object_detector -i="$(i)" -o="$(o)" -t="$(t)"
 
 # Help target
