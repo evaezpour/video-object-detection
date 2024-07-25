@@ -16,10 +16,6 @@ if not exist "GroundingDINO" (
 
 cd GroundingDINO
 
-:: Check out the specific branch
-echo Checking out the feature/more_compact_inference_api branch...
-git checkout feature/more_compact_inference_api
-
 :: Install the requirements
 echo Installing GroundingDINO dependencies...
 python -m pip install -e .

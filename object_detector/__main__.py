@@ -2,9 +2,9 @@ from object_detector.video_processor import process_video
 import argparse
 
 parser = argparse.ArgumentParser()
-parser.add_argument("-i", "--input_video_path", type=str)
-parser.add_argument("-o", "--output_video_path", type=str)
-parser.add_argument("-t", "--text_prompt", type=str)
+parser.add_argument("-i", "--input_video_path", type=str, required=True)
+parser.add_argument("-o", "--output_video_path", type=str, required=True)
+parser.add_argument("-t", "--text_prompt", type=str, required=True)
 args = parser.parse_args()
 
 
