@@ -47,15 +47,15 @@ clean:
 run:
 	# Run the main script
 	ifndef i
-	$(error input video file path is required)
+		$(error input video file path is required)
 	endif
 
 	ifndef o
-	$(error output video directory is required)
+		$(error output video directory is required)
 	endif
 
 	ifndef t
-	$(error text prompt is required)
+		$(error text prompt is required)
 	endif
 
 	$(PYTHON) -m object_detector -i="$(i)" -o="$(o)" -t="$(t)"
