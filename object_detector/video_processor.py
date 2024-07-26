@@ -39,6 +39,7 @@ def process_video(input_video_path, output_video_path, text_prompt, box_threshol
             # Detect objects in the frame
             detections, labels = detect_objects(model, frame, text_prompt, box_threshold, text_threshold)
             annotated_frame = draw_annotations(frame, detections, labels)
+
         except Exception as e:
             print(f"Error during object detection: {e}")
             continue
