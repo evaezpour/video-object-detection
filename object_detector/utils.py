@@ -1,33 +1,9 @@
-import supervision as sv
+import cv2
 
 
-def draw_annotations(frame, detections, labels):
-    box_annotator = sv.BoxAnnotator()
-
-    # Format the labels based on the confidence values in the detections object
-    formatted_labels = [
-        f"{label} {confidence:0.2f}"
-        for label, confidence in zip(labels, detections.confidence)
-    ]
-
-    # Draw bounding boxes
-    bbox_annotator = sv.BoundingBoxAnnotator()
-    annotated_frame = bbox_annotator.annotate(
-        scene=frame.copy(),
-        detections=detections
-    )
-
-    # Draw labels
-    label_annotator = sv.LabelAnnotator()
-    annotated_frame = label_annotator.annotate(
-        scene=annotated_frame,
-        labels=formatted_labels
-    )
-    '''
-    annotated_frame = box_annotator.annotate(
-        scene=frame.copy(),
-        detections=detections,
-        labels=formatted_labels
-    )
-    '''
-    return annotated_frame
+def draw_boxes(frame, boxes, labels):
+    for box, label in zip(boxes, labels):
+        x1, y1, x2, y2 = box
+        cv2.rectangle(frame, (int(x1), int(y1)), (int(x2), int(y2)), (0, 255, 0), 2)
+        cv2.putText(frame, label, (int(x1), int(y1) - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
+    return frame

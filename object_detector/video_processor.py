@@ -1,6 +1,6 @@
 import cv2
 from object_detector.model import load_grounding_dino_model
-from object_detector.utils import draw_annotations
+from object_detector.utils import draw_boxes
 
 
 def detect_objects(model, frame, text_prompt, box_threshold, text_threshold):
@@ -11,15 +11,12 @@ def detect_objects(model, frame, text_prompt, box_threshold, text_threshold):
         text_threshold=text_threshold
     )
 
-    # Debugging: Print the structure of detections
-    print("Detections:", detections)
+    # Ensure that detections contain class_id
+    if detections.class_id is None:
+        detections.class_id = [0] * len(detections.xyxy)  # Assign a default class_id if missing
 
-    return detections, labels
+    annotated_frame = draw_boxes(frame.copy(), detections.xyxy, labels)
 
-
-def process_frame(model, frame, text_prompt, box_threshold, text_threshold):
-    detections, labels = detect_objects(model, frame, text_prompt, box_threshold, text_threshold)
-    annotated_frame = draw_annotations(frame, detections, labels)
     return annotated_frame
 
 
@@ -36,8 +33,8 @@ def process_video(input_video_path, output_video_path, text_prompt, box_threshol
             break
 
         try:
-            # Process frame
-            annotated_frame = process_frame(model, frame, text_prompt, box_threshold, text_threshold)
+            # Detect objects in the frame
+            annotated_frame = detect_objects(model, frame, text_prompt, box_threshold, text_threshold)
 
         except Exception as e:
             print(f"Error during object detection: {e}")
