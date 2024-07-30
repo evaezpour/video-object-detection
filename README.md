@@ -41,6 +41,8 @@ To use the GroundingDINO model, you need to clone the repository and install the
      ```sh
      pip install -q -e .
      ```
+   
+   - Add GroundingDINO to Python path 
 
 2. **Automated Installation using `setup_groundingdino.bat` for windows:**
 
@@ -57,6 +59,8 @@ To use the GroundingDINO model, you need to clone the repository and install the
      .\setup_groundingdino.bat
      ```
 
+   - Add GroundingDINO to Python path
+   
 ### Package Installation
 
 After setting up GroundingDINO, you can install the video object detection package. Navigate to the directory containing `setup.py` and run:
@@ -71,11 +75,11 @@ To run the project in Docker, you need to build and run the Docker container:
 Navigate to the video_object_detection directory and run the following command:
 
 ```sh
-docker build -t object-detection-project .
+docker build -t video_object_detection .
 ```
 To run the image:
 ```sh
-docker run --rm -v $(pwd)/input_video:/app/video_object_detection/Demo/input_video -v $(pwd)/output_video:/app/video_object_detection/Demo/output_video video-object-detection -i /app/video_object_detection/object_detector/input_video/street_trim.mp4 -o /app/video_object_detection/object_detector/output_video -t "all cars"
+docker run --rm -v $(pwd)/input_video:/app/video_object_detection/Demo/input_video -v $(pwd)/output_video:/app/video_object_detection/Demo/output_video video-object-detection -i /app/video_object_detection/object_detector/Demo/input_video/street_trim.mp4 -o /app/video_object_detection/object_detector/Demo/output_video -t "all cars"
 ```
 
 ## Makefile
@@ -88,12 +92,14 @@ make run i="demo/input_video/street_trim.mp4" o="demo/output_video/" t="men" #to
 make clean #to clean up generated files"
 make help #to show the help message 
 ```
+## Jupyter Notebooks
+There is a Jupyter Notebook in the "notebooks" directory that can be used to run the package.  
 
 ## Usage
 Demo files are included in the demo directory:
 
-demo/input_video/: Contains sample video files for testing.
-demo/output_video/: Directory where processed videos will be saved.
+- demo/input_video/: Contains sample video files for testing.
+- demo/output_video/: Directory where processed videos will be saved.
 
 To test the object detection, use one of the sample videos from input_video and run the inference_on_a_video.py file.
 
