@@ -14,6 +14,8 @@ This package provides functionalities for performing object detection in videos 
 
 ## Installation
 
+For installation, you need to install the GroundingDINO model and the video_object_detection package. The steps are explained as follows.
+
 ### Prerequisites
 
 Before installing the package, ensure that you have Python 3.7+, Git, and pip installed on your system.
@@ -87,7 +89,7 @@ The Makefile automates common tasks.
 
 To use the Makefile, run:
 ```sh
-make install #to install package and GroundingDINO
+make install #to install the package and GroundingDINO
 make run i="demo/input_video/street_trim.mp4" o="demo/output_video/" t="men" #to run the package
 make clean #to clean up generated files"
 make help #to show the help message 

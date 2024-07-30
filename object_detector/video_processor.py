@@ -11,11 +11,19 @@ def detect_objects(model, frame, text_prompt, box_threshold, text_threshold):
         text_threshold=text_threshold
     )
 
+    # Format the labels based on the confidence values in the detections object
+    formatted_labels = [
+        f"{label} {confidence:0.2f}"
+        for label, confidence in zip(labels, detections.confidence)
+    ]
+
+    print(formatted_labels)
+
     # Ensure that detections contain class_id
     if detections.class_id is None:
         detections.class_id = [0] * len(detections.xyxy)  # Assign a default class_id if missing
 
-    annotated_frame = draw_boxes(frame.copy(), detections.xyxy, labels)
+    annotated_frame = draw_boxes(frame.copy(), detections.xyxy, formatted_labels)
 
     return annotated_frame
 
