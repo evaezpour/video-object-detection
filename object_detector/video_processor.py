@@ -22,6 +22,11 @@ def detect_objects(model, frame, text_prompt, box_threshold, text_threshold):
 
 def process_video(input_video_path, output_video_path, text_prompt, box_threshold=0.35, text_threshold=0.25):
     cap = cv2.VideoCapture(input_video_path)
+
+    # Check if video capture opened successfully
+    if not cap.isOpened():
+        raise ValueError(f"Error opening video file: {input_video_path}")
+
     fourcc = cv2.VideoWriter_fourcc(*'mp4v')
     out = None
 

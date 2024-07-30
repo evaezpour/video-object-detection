@@ -2,9 +2,7 @@
 set HOME=%HOMEDRIVE%%HOMEPATH%
 cd %HOME%
 
-:: Install PyTorch
-echo Installing PyTorch...
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+cd object_detector
 
 :: Clone the GroundingDINO repository if it doesn't exist
 if not exist "GroundingDINO" (
@@ -14,6 +12,8 @@ if not exist "GroundingDINO" (
     echo "GroundingDINO directory already exists. Skipping clone."
 )
 
+set PYTHONPATH=%PYTHONPATH%;%CD%\GroundingDINO
+
 cd GroundingDINO
 
 :: Install the requirements
@@ -21,4 +21,3 @@ echo Installing GroundingDINO dependencies...
 python -m pip install -e .
 
 echo "GroundingDINO setup complete."
-pause

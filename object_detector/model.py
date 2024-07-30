@@ -13,11 +13,9 @@ def download_weights(weights_path, url):
 
 def get_model_paths():
 
-    home = os.getcwd()
+    config_path = "./GroundingDINO/groundingdino/config/GroundingDINO_SwinT_OGC.py"
 
-    config_path = os.path.join(home, "GroundingDINO/groundingdino/config/GroundingDINO_SwinT_OGC.py")
-
-    weights_path = os.path.join(home, "GroundingDINO/groundingdino/weights/groundingdino_swint_ogc.pth")
+    weights_path = "./GroundingDINO/groundingdino/weights/groundingdino_swint_ogc.pth"
     if not os.path.exists(weights_path):
         url = "https://github.com/IDEA-Research/GroundingDINO/releases/download/v0.1.0-alpha/groundingdino_swint_ogc.pth"
         download_weights(weights_path, url)

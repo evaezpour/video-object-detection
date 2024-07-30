@@ -8,7 +8,6 @@ setup(
     name="object_detection_package",
     version="0.1.0",
     author="evaezpour",
-    author_email="your.email@example.com",
     description="A package for performing object detection in videos using a text prompt with GroundingDINO.",
     long_description=long_description,
     long_description_content_type="text/markdown",
