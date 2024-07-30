@@ -13,7 +13,7 @@ def detect_objects(model, frame, text_prompt, box_threshold, text_threshold):
 
     # Format the labels based on the confidence values in the detections object
     formatted_labels = [
-        f"{label} {confidence:0.2f}"
+        f"{label} : {confidence:0.2f}"
         for label, confidence in zip(labels, detections.confidence)
     ]
 
