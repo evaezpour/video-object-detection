@@ -15,6 +15,7 @@ def get_model_paths():
 
     #home = os.getcwd()
     home = os.path.dirname(os.path.abspath(__file__))
+    home = os.path.dirname(os.path.abspath(home))
     print(home)
 
     # Model Config file
