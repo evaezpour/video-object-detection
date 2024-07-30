@@ -2,8 +2,6 @@
 set HOME=%HOMEDRIVE%%HOMEPATH%
 cd %HOME%
 
-cd object_detector
-
 :: Clone the GroundingDINO repository if it doesn't exist
 if not exist "GroundingDINO" (
     echo Cloning GroundingDINO repository...
@@ -11,8 +9,6 @@ if not exist "GroundingDINO" (
 ) else (
     echo "GroundingDINO directory already exists. Skipping clone."
 )
-
-set PYTHONPATH=%PYTHONPATH%;%CD%\GroundingDINO
 
 cd GroundingDINO
 
