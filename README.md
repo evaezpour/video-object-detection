@@ -1,6 +1,16 @@
 # Object Detection Package
 
-This package provides functionalities for performing object detection in videos using a text prompt with the GroundingDINO model.
+The "video_object_detection" project is designed to perform object detection in video files, utilizing text prompts to guide the detection process. The key components and functionalities include:
+
+- Text Prompt-Based Detection: The project uses text prompts to specify the types of objects to detect in the video. 
+
+- Video Processing Pipeline: The system processes video files frame by frame. Each frame is analyzed to identify objects matching the text prompt, and annotations are added to the frames.
+
+- Object Detection with GroundingDINO: GroundingDINO model is employed to handle the core object detection tasks. It utilizes text prompts to ground object detection.
+
+- Annotation and Output: Detected objects are annotated with bounding boxes and labels. These annotations are visualized in the output video, making it easier to verify and interpret the results.
+
+- Integration and Configuration: The project includes setup scripts and configuration files to streamline the installation and configuration of dependencies, including GroundingDINO.
 
 ## Table of Contents
 
@@ -14,13 +24,21 @@ This package provides functionalities for performing object detection in videos 
 
 ## Installation
 
-For installation, you need to install the GroundingDINO model and the video_object_detection package. The steps are explained as follows.
+For installation, you need to install the video_object_detection package and the GroundingDINO model. The steps are explained as follows.
 
 ### Prerequisites
 
 Before installing the package, ensure that you have Python 3.7+, Git, and pip installed on your system.
 
-### GroundingDINO Model Installation
+### Package Installation:
+
+You can install the video object detection package. Navigate to the directory containing `setup.py` and run:
+
+```sh
+pip install .
+```
+
+### GroundingDINO Model Installation:
 
 To use the GroundingDINO model, you need to clone the repository and install the necessary dependencies. You have two options for this:
 
@@ -63,13 +81,6 @@ To use the GroundingDINO model, you need to clone the repository and install the
 
    - Add GroundingDINO to Python path
    
-### Package Installation
-
-After setting up GroundingDINO, you can install the video object detection package. Navigate to the directory containing `setup.py` and run:
-
-```sh
-pip install .
-```
 
 ## Docker Setup
 To run the project in Docker, you need to build and run the Docker container:
